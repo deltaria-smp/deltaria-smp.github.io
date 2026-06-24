@@ -5,12 +5,15 @@
     padding: 0;
 }
 :root {
-    --bg-dark: #0a0c14;
-    --bg-card: #121624;
+    --bg-dark: #070913;
+    --bg-card: #11162d;
+    --bg-card-hover: #171e3d;
     --accent-blue: #38bdf8;
-    --accent-green: #10b981;
-    --text-main: #f1f5f9;
+    --accent-java: #f43f5e;
+    --accent-bedrock: #10b981;
+    --text-main: #f8fafc;
     --text-muted: #94a3b8;
+    --border-color: #1e293b;
 }
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -22,103 +25,109 @@ body {
 
 /* --- NAVBAR --- */
 nav {
-    background-color: rgba(18, 22, 36, 0.8);
-    backdrop-filter: blur(10px);
+    background-color: rgba(7, 9, 19, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
+    padding: 20px 8%;
 }
 .nav-logo {
-    font-size: 22px;
-    font-weight: 800;
+    font-size: 24px;
+    font-weight: 900;
     color: var(--accent-blue);
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
 }
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     list-style: none;
 }
 .nav-links a {
     color: var(--text-muted);
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.2s;
+    font-size: 15px;
+    transition: color 0.2s, text-shadow 0.2s;
 }
 .nav-links a:hover {
-    color: var(--accent-blue);
+    color: var(--text-main);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 /* --- HERO SECTION --- */
 .hero {
-    min-height: 80vh;
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
-    margin-top: 60px;
-    background: linear-gradient(180deg, rgba(56,189,248,0.05) 0%, rgba(10,12,20,1) 100%);
+    padding: 120px 20px 60px 20px;
+    background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12) 0%, rgba(7, 9, 19, 1) 70%);
 }
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 900;
-    letter-spacing: -1px;
-    margin-bottom: 15px;
-    background: linear-gradient(to right, #fff, var(--accent-blue));
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ffffff 40%, var(--accent-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--text-muted);
-    max-width: 600px;
-    margin-bottom: 30px;
+    max-width: 700px;
+    margin-bottom: 40px;
+    font-weight: 400;
 }
 
-/* --- LAYOUT HORIZONTAL (FLEXROW) --- */
+/* --- LAYOUT HORIZONTAL IP BOX --- */
 .ip-flex-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 24px;
     width: 100%;
-    max-width: 900px;
-    margin-top: 15px;
-    padding: 0 10px;
+    max-width: 950px;
+    padding: 0 20px;
 }
 
 .ip-widget {
     background-color: var(--bg-card);
-    border: 1px solid #23293f;
-    padding: 15px 20px;
-    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 18px 24px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 18px;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    transition: transform 0.2s, border-color 0.2s;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s, background-color 0.25s;
     flex: 1;
-    min-width: 320px;
+    min-width: 340px;
 }
 
 .ip-widget:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    background-color: var(--bg-card-hover);
 }
 
-.java-theme:hover { border-color: #ef4444; }
-.bedrock-theme:hover { border-color: #10b981; }
+.java-theme:hover { border-color: var(--accent-java); box-shadow: 0 12px 30px rgba(244, 63, 94, 0.15); }
+.bedrock-theme:hover { border-color: var(--accent-bedrock); box-shadow: 0 12px 30px rgba(16, 185, 129, 0.15); }
 
 .server-icon {
-    font-size: 26px;
+    font-size: 28px;
     user-select: none;
 }
 
@@ -131,121 +140,139 @@ nav {
     font-size: 11px;
     text-transform: uppercase;
     color: var(--text-muted);
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     font-weight: 700;
 }
 
 .ip-address {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15px;
-    font-weight: bold;
-    color: #fff;
-    margin-top: 2px;
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 4px;
 }
 
 .port-label {
     font-family: 'Segoe UI', sans-serif;
     font-size: 12px;
-    color: var(--text-muted);
-    background: #1e293b;
-    padding: 1px 6px;
-    border-radius: 4px;
-    margin-left: 4px;
+    color: #ffffff;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 6px;
+    font-weight: 600;
 }
 
 .btn-copy {
     background-color: var(--accent-blue);
-    color: var(--bg-dark);
+    color: #070913;
     border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 800;
     font-size: 12px;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    transition: background-color 0.2s;
-    min-width: 85px;
+    transition: background-color 0.2s, transform 0.1s;
+    min-width: 95px;
+}
+.btn-copy:active {
+    transform: scale(0.95);
 }
 
-/* --- SEKSI ARTIKEL / GRID FITUR --- */
+/* --- SEKSI ARTIKEL / GRID FITUR (CENTRALIZED) --- */
 .container {
-    max-width: 1200px;
-    margin: 0 auto 80px auto;
+    max-width: 1100px;
+    margin: 100px auto; /* Membuat posisi seksi ini center di tengah layar */
     padding: 0 20px;
 }
 .section-title {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 40px;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
     font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    gap: 30px;
+    justify-content: center; /* Memastikan isi grid seimbang di tengah */
 }
 .card {
     background-color: var(--bg-card);
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    padding: 25px;
-    transition: transform 0.2s;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 35px 30px;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    text-align: left; /* Teks di dalam card tetap rapi rata kiri */
 }
 .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.08);
 }
 .card .icon {
-    font-size: 2rem;
-    margin-bottom: 15px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
     display: inline-block;
 }
 .card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-weight: 700;
 }
 .card p {
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 1.6;
 }
 
 /* --- FOOTER --- */
 footer {
     text-align: center;
-    padding: 40px 20px;
-    background-color: #07080e;
-    border-top: 1px solid #121624;
-    color: #475569;
-    font-size: 13px;
+    padding: 60px 20px;
+    background-color: #04050b;
+    border-top: 1px solid var(--border-color);
+    color: #64748b;
+    font-size: 14px;
 }
 
-/* --- GLOBAL RESPONSIVE MEDIA QUERY --- */
-@media (max-width: 768px) {
-    .nav-links { 
-        display: none; 
-    }
-    .hero h1 { 
-        font-size: 2.5rem; 
-    }
+/* --- MEDIA QUERIES (RESPONSIVE MOBILES) --- */
+@media (max-width: 900px) {
+    .hero h1 { font-size: 3rem; }
     .ip-flex-row {
         flex-direction: column;
         align-items: center;
     }
     .ip-widget {
         width: 100%;
-        max-width: 450px;
+        max-width: 500px;
         min-width: auto;
     }
 }
 
+@media (max-width: 768px) {
+    nav { padding: 15px 5%; }
+    .nav-links { display: none; } /* Menyembunyikan menu link di HP */
+    .container { margin: 60px auto; }
+    .section-title { font-size: 2rem; }
+}
+
 @media (max-width: 480px) {
-    .ip-address {
-        font-size: 13px;
-    }
+    .hero h1 { font-size: 2.4rem; }
+    .ip-widget { padding: 15px; gap: 12px; }
+    .server-icon { font-size: 22px; }
+    .ip-address { font-size: 13px; }
     .port-label {
-        font-size: 11px;
-        display: block;
+        display: inline-block;
         margin-left: 0;
-        margin-top: 4px;
-        width: max-content;
+        margin-top: 6px;
     }
 }
