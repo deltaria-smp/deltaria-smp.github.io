@@ -84,20 +84,22 @@ nav {
 }
 
 /* --- IP SERVER WIDGET --- */
-/* --- IP CONTAINER & WIDGET BARU --- */
-.ip-container {
+/* --- LAYOUT HORIZONTAL (FLEXROW) --- */
+.ip-flex-row {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row; /* Mengatur elemen agar berjejer horizontal */
+    justify-content: center;
+    gap: 20px;
     width: 100%;
-    max-width: 500px; /* Membatasi lebar tombol agar pas di layar PC & HP */
-    margin-top: 10px;
+    max-width: 900px; /* Diperlebar agar muat 2 tombol berdampingan */
+    margin-top: 15px;
+    padding: 0 10px;
 }
 
 .ip-widget {
     background-color: var(--bg-card);
     border: 1px solid #23293f;
-    padding: 12px 20px;
+    padding: 15px 20px;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -105,18 +107,19 @@ nav {
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     transition: transform 0.2s, border-color 0.2s;
+    flex: 1; /* Membuat kedua tombol memiliki lebar yang sama rata */
+    min-width: 320px;
 }
 
 .ip-widget:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
-/* Identitas Warna Border Saat Hover */
-.java-theme:hover { border-color: #ef4444; } /* Merah khas cangkir java */
-.bedrock-theme:hover { border-color: #10b981; } /* Hijau khas dirt block bedrock */
+.java-theme:hover { border-color: #ef4444; }
+.bedrock-theme:hover { border-color: #10b981; }
 
 .server-icon {
-    font-size: 24px;
+    font-size: 26px;
     user-select: none;
 }
 
@@ -135,7 +138,7 @@ nav {
 
 .ip-address {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     color: #fff;
     margin-top: 2px;
@@ -143,12 +146,12 @@ nav {
 
 .port-label {
     font-family: 'Segoe UI', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-muted);
     background: #1e293b;
-    padding: 2px 6px;
+    padding: 1px 6px;
     border-radius: 4px;
-    margin-left: 5px;
+    margin-left: 4px;
 }
 
 .btn-copy {
@@ -161,24 +164,18 @@ nav {
     font-size: 12px;
     cursor: pointer;
     transition: background-color 0.2s;
-    min-width: 90px;
+    min-width: 85px;
 }
 
-/* Modifikasi layout responsif di HP */
-@media (max-width: 480px) {
+/* --- RESPONSIVE MOBILE (Otomatis Vertikal di HP) --- */
+@media (max-width: 768px) {
+    .ip-flex-row {
+        flex-direction: column; /* Kembali vertikal kalau layar kekecilan */
+        align-items: center;
+    }
     .ip-widget {
-        flex-direction: row;
-        padding: 12px 15px;
-    }
-    .ip-address {
-        font-size: 13px;
-    }
-    .port-label {
-        font-size: 11px;
-        display: block;
-        margin-left: 0;
-        margin-top: 4px;
-        width: max-content;
+        width: 100%;
+        max-width: 450px;
     }
 }
 
