@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deltaria SMP - Official Minecraft Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">DELTARIA SMP</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#fitur">Fitur</a></li>
+            <li><a href="https://github.com/deltaria-smp" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Satu Komunitas, Tanpa Batas</h1>
+        <p>Selamat datang di Deltaria SMP. Survival Multiplayer Server berbasis Cross-Play Java & Bedrock dengan optimasi performa tinggi, sistem ekonomi adil, dan ekosistem mandiri.</p>
+        
+        <div class="ip-widget" onclick="copyIpServer()" title="Klik untuk menyalin alamat server">
+            <div class="ip-box">
+                <div class="ip-label">Klik untuk Salin IP Java & Bedrock</div>
+                <div class="ip-address" id="serverIp">play.deltariasmp.com</div>
+            </div>
+            <button class="btn-copy" id="copyBtn">SALIN IP</button>
+        </div>
+    </section>
+
+    <section class="container" id="fitur">
+        <h2 class="section-title">Kenapa Harus Bermain di Deltaria?</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <span class="icon">📱</span>
+                <h3>Dukungan Cross-Play</h3>
+                <p>Didukung oleh jembatan Geyser & Floodgate. Pemain dari Minecraft Java Edition (PC) dan Bedrock Edition (Android, iOS, Konsol) bisa berpetualang bersama di satu dunia yang sama tanpa hambatan.</p>
+            </div>
+
+            <div class="card">
+                <span class="icon">⚔️</span>
+                <h3>Sistem RPG (AuraSkills)</h3>
+                <p>Tingkatkan statistik karaktermu secara alami melalui grinding! Naikkan level Strength, Crit Damage, Kebal (Toughness), hingga Kecepatan Lari untuk mendominasi pertempuran pahlawan.</p>
+            </div>
+
+            <div class="card">
+                <span class="icon">🪙</span>
+                <h3>Ekonomi Mandiri (Bond of Trust)</h3>
+                <p>Bangun toko, kelola perizinan klaim wilayah, dan lakukan perdagangan antar pemain secara aman menggunakan protokol hak akses area perlindungan yang ketat dan bebas dari griefing.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Deltaria SMP Community. Website dibangun secara native melalui repositori organisasi.</p>
+        <p style="margin-top: 5px; font-size: 11px; color: #334155;">Tidak berafiliasi dengan Mojang Synergies AB.</p>
+    </footer>
+
+    <script>
+        function copyIpServer() {
+            const ipText = document.getElementById('serverIp').innerText;
+            const btn = document.getElementById('copyBtn');
+            
+            navigator.clipboard.writeText(ipText).then(() => {
+                btn.innerText = "TERSALIN!";
+                btn.style.backgroundColor = "#10b981";
+                
+                setTimeout(() => {
+                    btn.innerText = "SALIN IP";
+                    btn.style.backgroundColor = "#38bdf8";
+                }, 2000);
+            }).catch(err => {
+                console.error('Gagal menyalin IP: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
