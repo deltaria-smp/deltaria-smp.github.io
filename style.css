@@ -83,15 +83,14 @@ nav {
     margin-bottom: 30px;
 }
 
-/* --- IP SERVER WIDGET --- */
 /* --- LAYOUT HORIZONTAL (FLEXROW) --- */
 .ip-flex-row {
     display: flex;
-    flex-direction: row; /* Mengatur elemen agar berjejer horizontal */
+    flex-direction: row;
     justify-content: center;
     gap: 20px;
     width: 100%;
-    max-width: 900px; /* Diperlebar agar muat 2 tombol berdampingan */
+    max-width: 900px;
     margin-top: 15px;
     padding: 0 10px;
 }
@@ -107,7 +106,7 @@ nav {
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     transition: transform 0.2s, border-color 0.2s;
-    flex: 1; /* Membuat kedua tombol memiliki lebar yang sama rata */
+    flex: 1;
     min-width: 320px;
 }
 
@@ -167,16 +166,46 @@ nav {
     min-width: 85px;
 }
 
-/* --- RESPONSIVE MOBILE (Otomatis Vertikal di HP) --- */
-@media (max-width: 768px) {
-    .ip-flex-row {
-        flex-direction: column; /* Kembali vertikal kalau layar kekecilan */
-        align-items: center;
-    }
-    .ip-widget {
-        width: 100%;
-        max-width: 450px;
-    }
+/* --- SEKSI ARTIKEL / GRID FITUR --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+}
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: 800;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-4px);
+}
+.card .icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.card p {
+    color: var(--text-muted);
+    font-size: 14px;
 }
 
 /* --- FOOTER --- */
@@ -189,10 +218,34 @@ footer {
     font-size: 13px;
 }
 
-/* --- RESPONSIVE --- */
+/* --- GLOBAL RESPONSIVE MEDIA QUERY --- */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .nav-links { display: none; }
-    .ip-widget { flex-direction: column; text-align: center; }
-    .ip-box { text-align: center; }
+    .nav-links { 
+        display: none; 
+    }
+    .hero h1 { 
+        font-size: 2.5rem; 
+    }
+    .ip-flex-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .ip-widget {
+        width: 100%;
+        max-width: 450px;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .ip-address {
+        font-size: 13px;
+    }
+    .port-label {
+        font-size: 11px;
+        display: block;
+        margin-left: 0;
+        margin-top: 4px;
+        width: max-content;
+    }
 }
