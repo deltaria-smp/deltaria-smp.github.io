@@ -21,14 +21,62 @@
         <h1>Satu Komunitas, Tanpa Batas</h1>
         <p>Selamat datang di Deltaria SMP. Survival Multiplayer Server berbasis Cross-Play Java & Bedrock dengan optimasi performa tinggi, sistem ekonomi adil, dan ekosistem mandiri.</p>
         
-        <div class="ip-widget" onclick="copyIpServer()" title="Klik untuk menyalin alamat server">
-            <div class="ip-box">
-                <div class="ip-label">Klik untuk Salin IP Java & Bedrock</div>
-                <div class="ip-address" id="serverIp">play.deltariasmp.com</div>
+        <div class="ip-container">
+            
+            <div class="ip-widget java-theme" onclick="copyJavaIp()" title="Klik untuk menyalin IP Java">
+                <div class="server-icon">☕</div> <div class="ip-box">
+                    <div class="ip-label">Minecraft Java Edition</div>
+                    <div class="ip-address" id="javaIp">play.lunarmine.my.id:1111</div>
+                </div>
+                <button class="btn-copy" id="javaBtn">SALIN IP</button>
             </div>
-            <button class="btn-copy" id="copyBtn">SALIN IP</button>
+
+            <div class="ip-widget bedrock-theme" onclick="copyBedrockIp()" title="Klik untuk menyalin IP Bedrock">
+                <div class="server-icon">🧱</div> <div class="ip-box">
+                    <div class="ip-label">Minecraft Bedrock (HP/Konsol)</div>
+                    <div class="ip-address">
+                        <span id="bedrockIp">play.lunarmine.my.id</span> 
+                        <span class="port-label">Port: <strong id="bedrockPort">1111</strong></span>
+                    </div>
+                </div>
+                <button class="btn-copy" id="bedrockBtn">SALIN IP</button>
+            </div>
+
         </div>
     </section>
+
+    <script>
+        // Fungsi Salin IP Java
+        function copyJavaIp() {
+            const ipText = document.getElementById('javaIp').innerText;
+            const btn = document.getElementById('javaBtn');
+            executeCopy(ipText, btn);
+        }
+
+        // Fungsi Salin IP Bedrock (Hanya menyalin Domain/IP tanpa tulisan kata "Port")
+        function copyBedrockIp() {
+            const ipText = document.getElementById('bedrockIp').innerText;
+            const btn = document.getElementById('bedrockBtn');
+            executeCopy(ipText, btn);
+        }
+
+        // Core fungsi eksekusi clipboard
+        function executeCopy(text, buttonElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                buttonElement.innerText = "TERSALIN!";
+                buttonElement.style.backgroundColor = "#10b981";
+                buttonElement.style.color = "#fff";
+                
+                setTimeout(() => {
+                    buttonElement.innerText = "SALIN IP";
+                    buttonElement.style.backgroundColor = "#38bdf8";
+                    buttonElement.style.color = "#0a0c14";
+                }, 2000);
+            }).catch(err => {
+                console.error('Gagal menyalin text: ', err);
+            });
+        }
+    </script>
 
     <section class="container" id="fitur">
         <h2 class="section-title">Kenapa Harus Bermain di Deltaria?</h2>
