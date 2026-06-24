@@ -78,30 +78,30 @@
         }
     </script>
 
-    <section class="container" id="fitur">
-        <h2 class="section-title">Kenapa Harus Bermain di Deltaria?</h2>
-        <div class="grid">
+    <div class="ip-flex-row">
             
-            <div class="card">
-                <span class="icon">📱</span>
-                <h3>Dukungan Cross-Play</h3>
-                <p>Didukung oleh jembatan Geyser & Floodgate. Pemain dari Minecraft Java Edition (PC) dan Bedrock Edition (Android, iOS, Konsol) bisa berpetualang bersama di satu dunia yang sama tanpa hambatan.</p>
+            <div class="ip-widget java-theme" onclick="copyJavaIp()" title="Klik untuk menyalin IP Java">
+                <div class="server-icon">☕</div>
+                <div class="ip-box">
+                    <div class="ip-label">Minecraft Java Edition</div>
+                    <div class="ip-address" id="javaIp">play.lunarmine.my.id:1111</div>
+                </div>
+                <button class="btn-copy" id="javaBtn">SALIN IP</button>
             </div>
 
-            <div class="card">
-                <span class="icon">⚔️</span>
-                <h3>Sistem RPG (AuraSkills)</h3>
-                <p>Tingkatkan statistik karaktermu secara alami melalui grinding! Naikkan level Strength, Crit Damage, Kebal (Toughness), hingga Kecepatan Lari untuk mendominasi pertempuran pahlawan.</p>
-            </div>
-
-            <div class="card">
-                <span class="icon">🪙</span>
-                <h3>Ekonomi Mandiri (Bond of Trust)</h3>
-                <p>Bangun toko, kelola perizinan klaim wilayah, dan lakukan perdagangan antar pemain secara aman menggunakan protokol hak akses area perlindungan yang ketat dan bebas dari griefing.</p>
+            <div class="ip-widget bedrock-theme" onclick="copyBedrockIp()" title="Klik untuk menyalin IP Bedrock">
+                <div class="server-icon">🧱</div>
+                <div class="ip-box">
+                    <div class="ip-label">Minecraft Bedrock</div>
+                    <div class="ip-address">
+                        <span id="bedrockIp">play.lunarmine.my.id</span> 
+                        <span class="port-label">Port: <strong id="bedrockPort">1111</strong></span>
+                    </div>
+                </div>
+                <button class="btn-copy" id="bedrockBtn">SALIN IP</button>
             </div>
 
         </div>
-    </section>
 
     <footer>
         <p>&copy; 2026 Deltaria SMP Community. Website dibangun secara native melalui repositori organisasi.</p>
