@@ -1,0 +1,115 @@
+/* ==========================================================================
+   MODIFIKASI KHUSUS HALAMAN LIVE (UKURAN FIXED & GAGAH)
+   ========================================================================== */
+
+/* Mengunci ukuran kartu di dalam grid agar seragam */
+#streamer-list .card {
+    position: relative;
+    width: 100%;
+    max-width: 360px;    /* Lebar maksimal kotak ditentukan */
+    min-height: 480px;   /* Tinggi minimal kotak dikunci gede & tinggi */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 25px;
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin: 0 auto;      /* Memastikan kartu rapi di tengah */
+}
+
+/* Lingkaran Avatar Streamer */
+.live-avatar-circle {
+    width: 80px;
+    height: 80px;
+    background: #05070f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #162244;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Username TikTok */
+.tiktok-tag {
+    color: var(--accent-blue) !important;
+    font-family: 'Consolas', monospace;
+    font-weight: bold;
+    font-size: 14px !important;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+/* Penanda Badge Status Pojok Kanan Atas Kartu */
+.live-indicator-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 4px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+.live-badge-green {
+    background: rgba(0, 255, 155, 0.1);
+    border: 1px solid var(--accent-bedrock);
+    color: var(--accent-bedrock);
+}
+.live-badge-red {
+    background: rgba(255, 42, 95, 0.1);
+    border: 1px solid var(--accent-java);
+    color: var(--accent-java);
+}
+
+/* Efek Glow Bercahaya Sesuai Status Live */
+.live-online-card:hover {
+    border-color: var(--accent-bedrock) !important;
+    box-shadow: 0 15px 40px rgba(0, 255, 155, 0.15) !important;
+    transform: translateY(-5px);
+}
+
+.live-offline-card:hover {
+    border-color: var(--accent-java) !important;
+    box-shadow: 0 15px 40px rgba(255, 42, 95, 0.12) !important;
+    transform: translateY(-5px);
+}
+
+/* Pengunci Ukuran Kotak Terminal Window Status Log */
+#streamer-list .segment-window {
+    width: 100%;
+    min-height: 110px;   /* Tinggi kotak teks log dikunci */
+    max-height: 110px;
+    margin-top: auto;    /* Menolak tarikan otomatis dari teks atas */
+    margin-bottom: 20px;
+    overflow: hidden;    /* Mencegah teks meluber jika kepanjangan */
+}
+
+/* Tombol Tonton */
+.btn-action-live {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    background: var(--accent-blue);
+    color: #060814;
+}
+.btn-action-live:hover { 
+    filter: brightness(1.15);
+    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+}
+.btn-action-live:active { 
+    transform: scale(0.98); 
+}

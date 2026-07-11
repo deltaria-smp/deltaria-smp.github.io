@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deltaria SMP - Official Minecraft Server</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Jalur CSS baru mengarah ke folder home-assets -->
+    <link rel="stylesheet" href="home-assets/style.css">
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo">DELTARIA SMP</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="updates.html">Updates</a></li>
-            <li><a href="#fitur">Fitur</a></li>
-            <li><a href="support.html">Support</a></li>     
-        </ul>
-    </nav>
+    <div class="nav-logo">DELTARIA SMP</div>
+    <ul class="nav-links">
+        <li><a href="live/index.html">⭕ ON LIVE</a></li>
+        <li><a href="index.html#home">Home</a></li>
+        <!-- Diubah dari updates/ menjadi updates/index.html -->
+        <li><a href="updates/index.html">Updates</a></li>
+        <li><a href="index.html#fitur">Fitur</a></li>
+        <li><a href="support/index.html">Support</a></li>     
+    </ul>
+</nav>
 
     <section class="hero" id="home">
         <h1>Satu Komunitas, Tanpa Batas</h1>
@@ -25,7 +28,8 @@
         <div class="ip-flex-row">
             
             <div class="ip-widget java-theme" onclick="copyJavaIp()" title="Klik untuk menyalin IP Java">
-                <div class="server-icon"><img src="java.webp" alt="Java Icon" class="custom-icon-img"></div>
+                <!-- Jalur gambar aset global tetap di /assets/ -->
+                <div class="server-icon"><img src="assets/java.webp" alt="Java Icon" class="custom-icon-img"></div>
                 <div class="ip-box">
                     <div class="ip-label">Minecraft Java Edition</div>
                     <div class="ip-address" id="javaIp">play.lunarmine.my.id:1111</div>
@@ -34,7 +38,7 @@
             </div>
 
             <div class="ip-widget bedrock-theme" onclick="copyBedrockIp()" title="Klik untuk menyalin IP Bedrock">
-                <div class="server-icon"><img src="bedrock.jpeg" alt="Java Icon" class="custom-icon-img"></div>
+                <div class="server-icon"><img src="assets/bedrock.jpeg" alt="Bedrock Icon" class="custom-icon-img"></div>
                 <div class="ip-box">
                     <div class="ip-label">Minecraft Bedrock</div>
                     <div class="ip-address">
@@ -86,7 +90,8 @@
         }
 
         function copyBedrockIp() {
-            const ipText = document.getElementById('bedrockIp').innerText;
+            // Karena IP Bedrock dipisah dengan port, kita ambil IP murninya saja
+            const ipText = document.getElementById('bedrockIp').childNodes[0].textContent.trim();
             const btn = document.getElementById('bedrockBtn');
             executeCopy(ipText, btn);
         }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deltaria SMP - Live Streamers</title>
+    <!-- HUBUNGKAN KE CSS GLOBAL UTAMA -->
+    <link rel="stylesheet" href="../home-assets/style.css">
+    <!-- HUBUNGKAN KE CSS MODIFIKASI GRID LIVE -->
+    <link rel="stylesheet" href="live.css">
+</head>
+<body class="support-page-bg"> <!-- Memakai background premium bawaan style.css -->
+
+    <!-- NAVBAR PREMIUM -->
+    <nav>
+        <div class="nav-logo">DELTARIA SMP</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active-link">⭕ ON LIVE</a></li>
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../updates/index.html">Updates</a></li>
+            <li><a href="../index.html#fitur">Fitur</a></li>
+            <li><a href="../support/index.html">Support</a></li>     
+        </ul>
+    </nav>
+
+    <!-- WRAPPER UTAMA (Mengikuti struktur kontainer fitur halaman utama) -->
+    <div class="container" style="margin-top: 140px;">
+        <h2 class="section-title">Deltaria Streamer Monitor</h2>
+        
+        <!-- GRID UTAMA SEPERTI DI GAMBAR AWAL -->
+        <div class="grid" id="streamer-list">
+            <p class="loading" style="text-align: center; width: 100%; color: var(--text-muted);">Memuat data transmisi...</p>
+        </div>
+    </div>
+
+    <!-- SCRIPT UTAMA FIREBASE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCMf7bOqwJ-FKUSdhXVoiC__EK4fBTtWpQ",
+            authDomain: "deltaria-smp-web.firebaseapp.com",
+            projectId: "deltaria-smp-web",
+            storageBucket: "deltaria-smp-web.firebasestorage.app",
+            messagingSenderId: "1096498644593",
+            appId: "1:1096498644593:web:3d54546f6a0a3ceb143dd0",
+            measurementId: "G-98Z1HBTMF1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const streamerListContainer = document.getElementById('streamer-list');
+
+        onSnapshot(collection(db, "streamers"), (snapshot) => {
+            streamerListContainer.innerHTML = "";
+
+            if (snapshot.empty) {
+                streamerListContainer.innerHTML = "<p style='text-align:center; color:var(--text-muted); width:100%;'>Belum ada streamer aktif.</p>";
+                return;
+            }
+
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                
+                // Tema kartu menyesuaikan status live (Glow Hijau Bedrock jika live, Glow Merah Java jika offline)
+                const themeClass = data.isLive ? "live-online-card" : "live-offline-card";
+                const badgeText = data.isLive ? "LIVE" : "OFFLINE";
+                const badgeStyle = data.isLive ? "live-badge-green" : "live-badge-red";
+
+                // Menyatukan komponen ornamen Window Style dengan komponen Grid Card Fitur
+                const cardHTML = `
+                    <div class="card ${themeClass}">
+                        <span class="live-indicator-badge ${badgeStyle}">${badgeText}</span>
+                        <div class="live-avatar-circle">${data.avatar || '🎮'}</div>
+                        <h3>${data.name}</h3>
+                        <p class="tiktok-tag">${data.tiktok}</p>
+                        
+                        <div class="segment-window" style="margin-top: 20px; min-height: 90px;">
+                            <div class="window-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                                <span class="window-title">stream_status.log</span>
+                            </div>
+                            <div class="window-content" style="padding: 12px 15px;">
+                                <div class="placeholder-text" style="font-size: 11px;">"${data.desc}"</div>
+                                <div class="sub-placeholder" style="font-size: 10px; margin-top: 5px;">Topic: ${data.thumbnail}</div>
+                            </div>
+                        </div>
+
+                        <a href="https://tiktok.com/${data.tiktok}" target="_blank" class="btn-action-live">Tonton Streaming</a>
+                    </div>
+                `;
+                
+                streamerListContainer.innerHTML += cardHTML;
+            });
+        });
+    </script>
+</body>
+</html>
