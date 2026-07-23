@@ -196,13 +196,62 @@ nav {
 .items-theme .hub-badge { color: var(--accent-bedrock); border-color: rgba(0, 255, 155, 0.3); }
 
 /* ==========================================================================
-   4. MEDIA QUERIES RESPONSIVE
+   4. MEDIA QUERIES RESPONSIVE (FIXED FOR MOBILE)
    ========================================================================== */
 @media (max-width: 768px) {
-    nav { padding: 15px 6%; }
-    .nav-links { display: none; }
-    .container { margin-top: 120px; padding: 0 25px; }
-    .shop-title { font-size: 2.2rem; }
-    .hub-grid { grid-template-columns: 1fr; }
-    .hub-card { padding: 30px 20px; }
+    /* 1. Perbaikan Navigasi (Menu tidak hilang, bisa di-scroll kesamping) */
+    nav { 
+        padding: 15px 5%; 
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .nav-links { 
+        display: flex !important; 
+        overflow-x: auto;
+        width: 100%;
+        gap: 18px;
+        padding-bottom: 6px;
+        white-space: nowrap;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    /* 2. Perbaikan Kontainer & Kartu Shop */
+    .container { 
+        margin-top: 100px; 
+        padding: 0 20px; 
+    }
+    
+    .shop-title { 
+        font-size: 2.2rem; 
+    }
+    
+    .shop-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 35px;
+    }
+
+    /* KUNCI FIX: Memaksa kartu menjadi 1 kolom tumpuk rapi ke bawah */
+    .hub-grid { 
+        grid-template-columns: 1fr !important; 
+        gap: 20px;
+    }
+
+    .hub-card { 
+        padding: 25px 20px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .shop-title { 
+        font-size: 1.8rem; 
+    }
+    
+    .hub-card h3 {
+        font-size: 1.35rem;
+    }
 }

@@ -260,15 +260,75 @@ nav {
 }
 
 /* ==========================================================================
-   4. MEDIA QUERIES RESPONSIVE GRAPHIC GADGET
+   4. MEDIA QUERIES RESPONSIVE (FIXED FOR MOBILE)
    ========================================================================== */
 @media (max-width: 1024px) {
     .shop-title { font-size: 2.8rem; }
 }
 
 @media (max-width: 768px) {
-    nav { padding: 15px 6%; }
-    .nav-links { display: none; } /* Sinkron dengan behavior website utama */
-    .container { margin-top: 120px; padding: 0 25px; }
-    .shop-title { font-size: 2.2rem; }
+    /* 1. Navbar Mobile (Rapi, Terlihat, Bisa Di-scroll Kesamping) */
+    nav { 
+        padding: 15px 5% !important; 
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .nav-links { 
+        display: flex !important; 
+        overflow-x: auto;
+        width: 100%;
+        gap: 18px;
+        padding-bottom: 6px;
+        white-space: nowrap;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    /* 2. Container Padding & Spacing */
+    .container { 
+        margin-top: 130px; 
+        padding: 0 18px; 
+    }
+
+    .shop-title { 
+        font-size: 2.2rem; 
+    }
+
+    .shop-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    /* 3. Grid Ranks Card (Aman dari Horizontal Scroll) */
+    .ranks-grid { 
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)) !important; 
+        gap: 20px;
+    }
+
+    .rank-card { 
+        padding: 25px 18px; 
+    }
+
+    .rank-header {
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+    }
+
+    .rank-name {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .shop-title { 
+        font-size: 1.8rem; 
+    }
+    
+    .perks-list li {
+        font-size: 13px;
+    }
 }

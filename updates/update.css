@@ -279,3 +279,93 @@
     margin-top: 0;
     gap: 15px;
 }
+
+/* ==========================================================================
+   PERBAIKAN RESPONSIFITAS MOBILE & LIST MODE (HP)
+   ========================================================================== */
+
+/* 1. Navbar Mobile (Rapi & Bisa Di-scroll Horizontal) */
+@media (max-width: 768px) {
+    nav { 
+        padding: 12px 5% !important; 
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .nav-links { 
+        display: flex !important; 
+        overflow-x: auto;
+        width: 100%;
+        gap: 15px;
+        padding-bottom: 5px;
+        white-space: nowrap;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    body {
+        padding-top: 100px; /* Memberi ruang aman di bawah navbar fixed */
+    }
+
+    /* 2. Header Filter & Tags di HP */
+    .forum-header {
+        margin-top: 10px;
+        padding: 0 15px;
+    }
+
+    .filter-tags {
+        overflow-x: auto; /* Tag filter bisa di-swipe kesamping di HP */
+        flex-wrap: nowrap !important;
+        padding-bottom: 8px;
+        width: 100%;
+    }
+
+    .tag-btn {
+        flex-shrink: 0; /* Tag tidak akan menciut/gepeng */
+    }
+
+    /* 3. Grid Card Forum Aman dari Overflow */
+    .forum-main-container {
+        padding: 15px;
+        margin-bottom: 30px;
+    }
+
+    .forum-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+        gap: 15px;
+    }
+
+    .forum-card {
+        padding: 16px;
+    }
+
+    /* 4. Penyesuaian List Mode Khusus Layar Mobile */
+    .forum-grid.list-mode .forum-card {
+        flex-direction: column !important; /* Kembalikan ke vertikal agar tidak empet-empetan */
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+
+    .forum-grid.list-mode .card-meta {
+        min-width: 100% !important;
+    }
+
+    .forum-grid.list-mode .card-footer {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 8px !important;
+    }
+
+    /* 5. Modal Pop-up di HP */
+    .modal-content {
+        padding: 20px 15px;
+        max-height: 85vh;
+    }
+
+    .modal-title {
+        font-size: 18px;
+    }
+}

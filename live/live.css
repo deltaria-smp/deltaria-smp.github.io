@@ -186,3 +186,32 @@
 .btn-action-live:active { 
     transform: scale(0.98); 
 }
+
+/* ==========================================================================
+   PERBAIKAN RESPONSIFITAS MOBILE (HP)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Mencegah overflow horizontal di layar HP sempit */
+    #streamer-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 20px !important;
+        padding: 0 10px;
+    }
+
+    #streamer-list .card {
+        max-width: 100% !important;
+        min-height: auto !important; /* Agar tinggi fleksibel menyesuaikan isi di HP */
+        padding: 25px 18px !important;
+    }
+
+    .live-status-console {
+        max-height: none !important; /* Menghindari teks deskripsi terpotong */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mengatur ulang jarak atas di HP agar tidak terlalu jauh melayang ke bawah */
+    .container[style*="margin-top: 140px"] {
+        margin-top: 80px !important;
+    }
+}

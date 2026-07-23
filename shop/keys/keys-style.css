@@ -169,11 +169,68 @@ nav {
 .normal-btn:hover { background: #1d2d5f; }
 
 /* ==========================================================================
-   5. RESPONSIVE LAYER
+   5. RESPONSIVE LAYER (FIXED FOR MOBILE)
    ========================================================================= */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .container { margin-top: 120px; padding: 0 25px; }
-    .shop-title { font-size: 2.2rem; }
-    .bundle-section, .single-section { grid-template-columns: 1fr; }
+    /* 1. Fix Navbar Mobile (Tidak Hilang, Bisa Di-swipe Kesamping) */
+    nav { 
+        padding: 15px 5% !important; 
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .nav-links { 
+        display: flex !important; 
+        overflow-x: auto;
+        width: 100%;
+        gap: 18px;
+        padding-bottom: 6px;
+        white-space: nowrap;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    /* 2. Fix Jarak & Padding Container */
+    .container { 
+        margin-top: 130px; 
+        padding: 0 18px; 
+    }
+
+    .shop-title { 
+        font-size: 2.2rem; 
+    }
+
+    .shop-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    .section-divider {
+        font-size: 1.15rem;
+        margin: 30px 0 20px 0;
+    }
+
+    /* 3. Fix Grid Card Bundle & Single Key (Aman dari Overflow) */
+    .bundle-section, 
+    .single-section { 
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)) !important; 
+        gap: 20px;
+    }
+
+    .key-card {
+        padding: 25px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .shop-title {
+        font-size: 1.8rem;
+    }
+    
+    .current-price {
+        font-size: 22px;
+    }
 }

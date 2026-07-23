@@ -224,3 +224,58 @@ nav {
 .nav-links a.active-link {
     color: #38bdf8 !important; /* Warna biru muda menyala saat aktif/hover */
 }
+
+/* ==========================================
+   PERBAIKAN RESPONSIFITAS MOBILE (HP)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Navbar Mobile (Rapi & Bisa Di-scroll Horizontal) */
+    nav { 
+        padding: 12px 5% !important; 
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .nav-links { 
+        display: flex !important; 
+        overflow-x: auto;
+        width: 100%;
+        gap: 15px;
+        padding-bottom: 5px;
+        white-space: nowrap;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    /* 2. Penyesuaian Padding Body & Wrapper */
+    .support-page-bg {
+        padding-top: 110px; /* Jarak atas aman karena navbar bertumpuk */
+    }
+
+    .support-wrapper {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+
+    .support-header h1 {
+        font-size: 2rem;
+    }
+
+    .support-header p {
+        font-size: 0.95rem;
+    }
+
+    /* 3. Grid Card Support Aman di Layar HP Sempit */
+    .support-grid {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 20px;
+    }
+
+    .support-segment {
+        padding: 25px 20px;
+        min-height: auto; /* Mengikuti isi konten di HP */
+    }
+}
