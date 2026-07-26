@@ -5,31 +5,31 @@
 /* KUNCI UTAMA: Menetralisir flex slider global agar kembali menjadi CSS Grid murni */
 #streamer-list {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 360px)) !important;
-    gap: 35px !important;
-    justify-content: center !important;
+    /* Menggunakan 4 kolom presisi di desktop */
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
     width: 100% !important;
-    transform: none !important; /* Mencegah bug geser script slider */
+    transform: none !important;
 }
 
-/* Mengunci ukuran kartu di dalam grid agar seragam */
+/* Mengunci ukuran kartu agar proporsional dalam 4 kolom */
 #streamer-list .card {
     position: relative;
     width: 100%;
-    max-width: 360px;    /* Lebar maksimal kotak ditentukan */
-    min-height: 480px;   /* Tinggi minimal kotak dikunci gede & tinggi */
+    max-width: 100%;      /* Fleksibel mengikuti lebar 1/4 kolom */
+    min-height: 460px;   
     display: flex !important;
-    flex-direction: column !important; /* Konten disusun vertikal ke bawah */
-    align-items: center !important;     /* Konten rata tengah secara horizontal */
+    flex-direction: column !important; 
+    align-items: center !important;     
     justify-content: flex-start !important;
-    padding: 35px 25px;
+    padding: 25px 18px;  /* Padding disesuaikan agar muat 4 kolom rapi */
     background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-card) 100%);
     border: 2px solid #15224f;
-    border-radius: 24px;
+    border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
-    margin: 0 auto;      /* Memastikan kartu rapi di tengah */
-    flex: none !important; /* Mematikan flex-grow bawaan slider main page */
+    margin: 0 auto;      
+    flex: none !important; 
 }
 
 /* Lingkaran Avatar Streamer */
@@ -190,28 +190,27 @@
 /* ==========================================================================
    PERBAIKAN RESPONSIFITAS MOBILE (HP)
    ========================================================================== */
-@media (max-width: 768px) {
-    /* Mencegah overflow horizontal di layar HP sempit */
+@media (max-width: 1200px) {
     #streamer-list {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        grid-template-columns: repeat(3, 1fr) !important; /* Laptop / Tablet Landscape: 3 Kolom */
         gap: 20px !important;
-        padding: 0 10px;
-    }
-
-    #streamer-list .card {
-        max-width: 100% !important;
-        min-height: auto !important; /* Agar tinggi fleksibel menyesuaikan isi di HP */
-        padding: 25px 18px !important;
-    }
-
-    .live-status-console {
-        max-height: none !important; /* Menghindari teks deskripsi terpotong */
     }
 }
 
-@media (max-width: 480px) {
-    /* Mengatur ulang jarak atas di HP agar tidak terlalu jauh melayang ke bawah */
-    .container[style*="margin-top: 140px"] {
-        margin-top: 80px !important;
+@media (max-width: 900px) {
+    #streamer-list {
+        grid-template-columns: repeat(2, 1fr) !important; /* Tablet Portrait: 2 Kolom */
+    }
+}
+
+@media (max-width: 600px) {
+    #streamer-list {
+        grid-template-columns: 1fr !important; /* HP / Smartphone: 1 Kolom Full */
+        gap: 16px !important;
+    }
+    
+    #streamer-list .card {
+        min-height: auto !important;
+        padding: 20px 15px !important;
     }
 }
