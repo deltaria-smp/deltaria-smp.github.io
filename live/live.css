@@ -1,82 +1,94 @@
 /* ==========================================================================
-   MODIFIKASI KHUSUS HALAMAN LIVE (UKURAN FIXED & GAGAH)
+   MODIFIKASI KHUSUS HALAMAN LIVE (4 KOLOM DESKTOP FIX)
    ========================================================================== */
 
-/* KUNCI UTAMA: Menetralisir flex slider global agar kembali menjadi CSS Grid murni */
+/* 1. PAKSA CONTAINER HALAMAN LIVE AGAR LEBAR */
+.container {
+    max-width: 1400px !important; /* Melonggarkan container dari 800px ke 1400px */
+    width: 92% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* 2. SETTING GRID 4 KOLOM */
 #streamer-list {
     display: grid !important;
-    /* Menggunakan 4 kolom presisi di desktop */
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr) !important; /* Paksa 4 Kolom Sejajar */
     gap: 20px !important;
     width: 100% !important;
     transform: none !important;
 }
 
-/* Mengunci ukuran kartu agar proporsional dalam 4 kolom */
+/* 3. KARTU STREAMER FLEXIBEL */
 #streamer-list .card {
     position: relative;
-    width: 100%;
-    max-width: 100%;      /* Fleksibel mengikuti lebar 1/4 kolom */
-    min-height: 460px;   
+    width: 100% !important;
+    max-width: none !important; /* Menghapus batasan 360px agar pas di kolom */
+    min-height: 440px;   
     display: flex !important;
     flex-direction: column !important; 
     align-items: center !important;     
     justify-content: flex-start !important;
-    padding: 25px 18px;  /* Padding disesuaikan agar muat 4 kolom rapi */
+    padding: 25px 16px !important;
     background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-card) 100%);
     border: 2px solid #15224f;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
-    margin: 0 auto;      
+    margin: 0 !important;      
     flex: none !important; 
 }
 
 /* Lingkaran Avatar Streamer */
 .live-avatar-circle {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     background: #05070f;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.8rem;
-    margin-top: 25px;
-    margin-bottom: 15px;
+    font-size: 2.5rem;
+    margin-top: 15px;
+    margin-bottom: 12px;
     border: 2px solid #162244;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
-/* Reset teks agar nama & tag TikTok tidak bertubrukan */
+.live-avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Reset teks nama & tag TikTok */
 #streamer-list .card h3 {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
     color: #ffffff;
     font-weight: 800;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     text-align: center;
     width: 100%;
 }
 
-/* Username TikTok */
 .tiktok-tag {
     color: var(--accent-blue) !important;
     font-family: 'Consolas', monospace;
     font-weight: bold;
-    font-size: 14px !important;
-    margin-bottom: 20px;
+    font-size: 13px !important;
+    margin-bottom: 15px;
     text-align: center;
     width: 100%;
 }
 
-/* Penanda Badge Status Pojok Kanan Atas Kartu */
+/* Penanda Badge Status Live/Offline */
 .live-indicator-badge {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     font-size: 10px;
     font-weight: 900;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 6px;
     letter-spacing: 0.5px;
     z-index: 5;
@@ -92,10 +104,10 @@
     color: var(--accent-java);
 }
 
-/* Efek Glow Bercahaya Sesuai Status Live */
+/* Efek Glow Status */
 .live-online-card:hover {
     border-color: var(--accent-bedrock) !important;
-    box-shadow: 0 15px 40px rgba(0, 255, 155, 0.15) !important;
+    box-shadow: 0 15px 30px rgba(0, 255, 155, 0.15) !important;
     transform: translateY(-5px);
 }
 
@@ -105,112 +117,79 @@
     transform: translateY(-5px);
 }
 
-/* ==========================================================================
-   KONSOL STATUS MINIMALIS & ELEGAN
-   ========================================================================== */
-
+/* Konsol Status Deskripsi */
 .live-status-console {
     width: 100%;
-    min-height: 100px;
-    max-height: 120px;
+    min-height: 90px;
     margin-top: auto !important;
-    margin-bottom: 25px !important;
-    padding: 16px 20px;
-    background: rgba(5, 7, 15, 0.6); /* Transparan gelap premium */
-    border-left: 3px solid var(--accent-blue); /* Aksen garis vertikal tajam */
-    border-radius: 4px 12px 12px 4px;
+    margin-bottom: 20px !important;
+    padding: 12px 14px;
+    background: rgba(5, 7, 15, 0.6);
+    border-left: 3px solid var(--accent-blue);
+    border-radius: 4px 10px 10px 4px;
     font-family: 'Consolas', monospace;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
 }
 
-/* Pesan Deskripsi Utama */
 .status-message {
-    font-size: 12.5px;
+    font-size: 11.5px;
     font-weight: 500;
-    line-height: 1.5;
+    line-height: 1.4;
     color: #e2e8f0;
     font-style: italic;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Batasi maksimal 2 baris agar tetap rapi */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* Bagian Meta/Topik Bawah */
 .status-meta {
-    font-size: 10.5px;
+    font-size: 10px;
     letter-spacing: 0.5px;
-    margin-top: 8px;
+    margin-top: 6px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 6px;
+    padding-top: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.meta-label {
-    color: #4e6199;
-    font-weight: bold;
-    margin-right: 4px;
-}
-
-.meta-value {
-    color: var(--accent-blue);
-    font-weight: 600;
-}
+.meta-label { color: #4e6199; font-weight: bold; margin-right: 4px; }
+.meta-value { color: var(--accent-blue); font-weight: 600; }
 
 /* Tombol Tonton */
 .btn-action-live {
     width: 100%;
     text-align: center;
     text-decoration: none;
-    padding: 14px;
-    border-radius: 12px;
+    padding: 12px;
+    border-radius: 10px;
     font-weight: 800;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     transition: all 0.2s;
     background: var(--accent-blue);
     color: #060814;
-    margin-top: auto; /* Mendorong tombol selalu berada di dasar kartu */
+    margin-top: auto;
 }
-.btn-action-live:hover { 
-    filter: brightness(1.15);
-    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
-}
-.btn-action-live:active { 
-    transform: scale(0.98); 
-}
+.btn-action-live:hover { filter: brightness(1.15); box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3); }
 
 /* ==========================================================================
-   PERBAIKAN RESPONSIFITAS MOBILE (HP)
+   RESPONSIF TABLET & HP
    ========================================================================== */
-@media (max-width: 1200px) {
-    #streamer-list {
-        grid-template-columns: repeat(3, 1fr) !important; /* Laptop / Tablet Landscape: 3 Kolom */
-        gap: 20px !important;
-    }
+@media (max-width: 1100px) {
+    #streamer-list { grid-template-columns: repeat(3, 1fr) !important; }
 }
 
-@media (max-width: 900px) {
-    #streamer-list {
-        grid-template-columns: repeat(2, 1fr) !important; /* Tablet Portrait: 2 Kolom */
-    }
+@media (max-width: 800px) {
+    #streamer-list { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
-@media (max-width: 600px) {
-    #streamer-list {
-        grid-template-columns: 1fr !important; /* HP / Smartphone: 1 Kolom Full */
-        gap: 16px !important;
-    }
-    
-    #streamer-list .card {
-        min-height: auto !important;
-        padding: 20px 15px !important;
-    }
+@media (max-width: 550px) {
+    #streamer-list { grid-template-columns: 1fr !important; }
+    .container { width: 95% !important; margin-top: 100px !important; }
 }
